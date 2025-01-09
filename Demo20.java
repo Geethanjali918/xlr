@@ -1,32 +1,23 @@
+import java.util.Scanner;
 public class Demo20 {
-    public static int[] getFibonacciSeries(int n) {
-        if (n <= 0) {
-            System.out.println(0);
-            return new int[]{};
+    public static String getFizzBizz(int number) {
+        if (number <= 0) {
+            return "Error";
         }
-        int[] fibonacciSeries = new int[n];
-        fibonacciSeries[0] = 0;
-        if (n > 1) {
-            fibonacciSeries[1] = 1;
+        if (number % 3 == 0 && number % 5 == 0) {
+            return "FIZZBIZZ";
+        } else if (number % 3 == 0) { 
+            return "FIZZ";
+        } else if (number % 5 == 0) {
+            return "BIZZ";
         }
-        for (int i = 2; i < n; i++) {
-            fibonacciSeries[i] = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
-        }
-
-        return fibonacciSeries;
+        return String.valueOf(number);
     }
-
     public static void main(String[] args) {
-        int n = 7;
-        int[] result = getFibonacciSeries(n);
-        if (result.length > 0) {
-            for (int i = 0; i < result.length; i++) {
-                System.out.print(result[i]);
-                if (i < result.length - 1) {
-                    System.out.print(", ");
-                }
-            }
-        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        System.out.println(getFizzBizz(number));
+        scanner.close();
     }
 }
-
